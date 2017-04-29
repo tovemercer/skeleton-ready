@@ -1,0 +1,23 @@
+<!-- change -->
+<h1><%= @entry.title %></h1>
+<!-- change -->
+<span><%= "Written on #{long_form_date(@entry.created_at)}." %></span>
+<!-- change -->
+<p><%= @entry.body %></p>
+<!-- change -->
+<% if current_user == @entry.user %>
+  <ul>
+    <li>
+      <!-- change a tag values -->
+      <a href="/entries/<%= @entry.id %>/edit" class="c-white">edit</a>
+    </li>
+
+    <li>
+      <!-- change action values -->
+      <form method="post" action="/entries/<%= @entry.id %>" class="inline">
+        <input type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete">
+      </form>
+    </li>
+  </ul>
+<% end %>

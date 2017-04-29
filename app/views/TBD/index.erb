@@ -1,0 +1,20 @@
+<% if logged_in? %>
+<!-- change -->
+  <a href="/entries/new">Hidden Buttonif not logged in</a>
+<% end %>
+
+<main role="main">
+  <ul>
+    <!-- change -->
+    <% @entries.each do |entry| %>
+      <li>
+        <!-- change -->
+        <a href="/entries/<%= entry.id %>"><%= entry.title %></a>
+        <!-- change -->
+        <span><%= "Written on #{long_form_date(entry.created_at)} by " %><a href="/users/<%= entry.user_id %>/entries"><%= entry.user.username %></a></span>
+        <!-- change -->
+        <p><%= stub(entry.body) %></p>
+      </li>
+    <% end %>
+  </ul>
+</main>

@@ -1,0 +1,11 @@
+<h1>New</h1>
+
+<%= erb :_errors %>
+<!-- change action value -->
+<form method="post" action="/TBD">
+  <input name="entry[title]" type="text" value="<%= @entry.try(:title) %>" placeholder="Title">
+<!-- chnage try value -->
+  <textarea placeholder="Body" name="entry[body]"><%= @entry.try(:body) %></textarea>
+
+  <input type="submit" value="Submit">
+</form>

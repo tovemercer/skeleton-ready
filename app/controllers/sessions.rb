@@ -11,7 +11,7 @@ post '/sessions' do
     session[:user_id] = user.id
     redirect "/users/#{user.id}"
   else
-    @errors = ["error"]
+    @errors = ["Incorrent login info"]
     erb :'sessions/new'
   end
 end
