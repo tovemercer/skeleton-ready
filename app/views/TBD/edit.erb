@@ -1,0 +1,15 @@
+<h3>Edit</h3>
+
+<%= erb :'_errors' %>
+
+<!-- change action route -->
+<form method="post" action="/route/<%= route.id %> ">
+  <input type="hidden" name="_method" value="put">
+<!-- change value try -->
+  <input name="entry[title]" type="text" value="<%= @entry.try(:title) %>" placeholder="Title">
+<!-- change value try -->
+  <label for="body-textarea" class="block mar-b-1">Body:</label>
+  <textarea placeholder="Body" name="entry[body]"><%= @entry.try(:body) %></textarea>
+
+  <input type="submit" value="Submit">
+</form>
