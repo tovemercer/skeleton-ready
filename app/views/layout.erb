@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -15,9 +15,35 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="/js/application.js"></script>
 
-  <title></title>
+  <title>Site Title</title>
 </head>
+
 <body>
-  <%= yield %>
+  <header>
+    <nav class="header-footer">
+      <ul>
+        <% if logged_in? %>
+          <li><a href="/users/<%= current_user.id %>"><%= current_user.username %></a></li>
+          <li>
+            <form id="logout-form" action="/sessions" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input id="link-disguise" type="submit" value="logout">
+            </form>
+          </li>
+        <% else %>
+          <li><a href="/users/new">register</a></li>
+          <li><a href="/sessions/new">login</a></li>
+        <% end %>
+        <li><a href="/">home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <h1 class="center">Site Title</h1>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <footer class="header-footer"><a href="/"><img class="bumblebess" src="/images/bumblebess.png"></a></footer>
 </body>
+
 </html>
