@@ -30,13 +30,13 @@ end
 
 # show a specfic entry
 get '/TBD/:id' do
-  @entry = find_and_ensure_entry(params[:id])
+  @entry = TBD.find(params[:id])
   erb :'TBD/show'
 end
 
 # updates a specfic entry
 put '/TBD/:id' do
-  @entry = find_and_ensure_entry(params[:id])
+  @entry = TBD.find(params[:id])
   @entry.assign_attributes(params[:entry])
 
   if current_user != @entry.user
@@ -51,7 +51,7 @@ end
 
 # deletes a specfic entry
 delete '/TBD/:id' do
-  @entry = find_and_ensure_entry(params[:id])
+  @entry = TBD.find(params[:id])
 
   if current_user != @entry.user
     erb :'not_authorized'
@@ -63,7 +63,7 @@ end
 
 # gets the edit page for a specfic entry
 get '/TBD/:id/edit' do
-  @entry = find_and_ensure_entry(params[:id])
+  @entry = TBD.find(params[:id])
 
   if current_user != @entry.user
     erb :'not_authorized'
